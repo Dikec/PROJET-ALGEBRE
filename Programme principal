@@ -11,7 +11,7 @@ with open(baseFileName, 'rb') as f:
     baseUserItem =  [dict([key, int(value)] for key, value in row.iteritems()) for row in list(reader)]
 
 #autre technique pour ouvrir le fichier et le lire
-path='data_movieLens/ml-100k/u1.base'
+path='data_movieLens/ml-100k/u1.base' #chemin menant a u1.base
 fic=open(path, "r", 1024, encoding="utf-8")
 for line in fic :
     print(line)
