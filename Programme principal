@@ -4,18 +4,34 @@ import numpy as np
 import matplotlib as plt
 import pylab as pl
 
-with open(baseFileName, 'rb') as f:
-    fieldnames=['user','movie','rating','datestamp']
-    reader = csv.DictReader(f, delimiter = '\t', fieldnames=fieldnames)
+#path='data_movieLens/ml-100k/u1.base'
+with open('data_movieLens/ml-100k/u1.base', 'r') as f:
+    fieldnames1=['user','movie','rating','datestamp']
+    reader1 = csv.DictReader(f, delimiter = '\t', fieldnames=fieldnames1)
     # create a dict out of reader, converting all values to integers
-    baseUserItem =  [dict([key, int(value)] for key, value in row.iteritems()) for row in list(reader)]
-
-#autre technique pour ouvrir le fichier et le lire
-path='data_movieLens/ml-100k/u1.base' #chemin menant a u1.base
-fic=open(path, "r", 1024, encoding="utf-8")
-for line in fic :
-    print(line)
+    baseUserItem1 =  [dict([key, int(value)] for key, value in row.items()) for row in list(reader1)]
+    #for i in baseUserItem:
+    #    print(i)
+with open('data_movieLens/ml-100k/u1.test', 'r') as f:
+    fieldnames2=['user','movie','rating','datestamp']
+    reader2 = csv.DictReader(f, delimiter = '\t', fieldnames=fieldnames2)
+    # create a dict out of reader, converting all values to integers
+    baseUserItem2 =  [dict([key, int(value)] for key, value in row.items()) for row in list(reader2)]
+    for i in baseUserItem2:
+        print(i)
    
-with open('u.user', 'rb') as f:
+with open('data_movieLens/ml-100k/u.user', 'r') as f:
     reader = csv.DictReader(f, delimiter = '|', fieldnames=['user','age','sex','occupation','zipcode'])
     User = list(reader)
+    print(User)
+
+#attention ne fonctionne pas 
+with open('data_movieLens/ml-100k/u.item', 'r',1024, encoding="utf-8") as f:
+    reader = csv.DictReader(f, delimiter = '|', fieldnames=['movie id','movie title',' release date' ,' video release date',
+              'IMDb URL','unknown ',' Action','Adventure','Animation ', 
+              'Childrens','Comedy','Crime ','Documentary ','Drama','Fantasy',
+              'Film-Noir ','Horror', 'Musical', 'Mystery ','Romance','Sci-Fi ', 'Thriller','War', 'Western '])
+    #for i in reader4:
+       # print(i)
+    User = list(reader)
+    print(User)
