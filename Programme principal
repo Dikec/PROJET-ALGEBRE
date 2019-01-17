@@ -9,6 +9,12 @@ with open(baseFileName, 'rb') as f:
     reader = csv.DictReader(f, delimiter = '\t', fieldnames=fieldnames)
     # create a dict out of reader, converting all values to integers
     baseUserItem =  [dict([key, int(value)] for key, value in row.iteritems()) for row in list(reader)]
+
+#autre technique pour ouvrir le fichier et le lire
+path='data_movieLens/ml-100k/u1.base'
+fic=open(path, "r", 1024, encoding="utf-8")
+for line in fic :
+    print(line)
    
 with open('u.user', 'rb') as f:
     reader = csv.DictReader(f, delimiter = '|', fieldnames=['user','age','sex','occupation','zipcode'])
