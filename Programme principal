@@ -1,2 +1,15 @@
-print("Hello")
+import csv
+import numpy as np
+%matplotlib inline # pour ipython notebook 
+import matplotlib as plt
+import pylab as pl
 
+with open(baseFileName, 'rb') as f:
+    fieldnames=['user','movie','rating','datestamp']
+    reader = csv.DictReader(f, delimiter = '\t', fieldnames=fieldnames)
+    # create a dict out of reader, converting all values to integers
+    baseUserItem =  [dict([key, int(value)] for key, value in row.iteritems()) for row in list(reader)]
+   
+with open('u.user', 'rb') as f:
+    reader = csv.DictReader(f, delimiter = '|', fieldnames=['user','age','sex','occupation','zipcode'])
+    User = list(reader)
